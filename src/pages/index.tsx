@@ -6,15 +6,23 @@ export default function Home() {
     <>
       <div className={styles.container}>
         <div className={styles.mt}>
-          <LinkCard />
+          <LinkCard data={data} />
         </div>
         <div className={styles.mt}>
-          <LinkCard />
+          <LinkCard data={data} />
         </div>
         <div className={styles.mt}>
-          <LinkCard />
+          <LinkCard data={data} />
         </div>
       </div>
     </>
   );
 }
+
+const data = {
+  url: "https://via.placeholder.com/150x150",
+  title: "タイトルが入ります",
+  text: "テキス",
+  link: "/",
+  img: "https://via.placeholder.com/150x150",
+};
