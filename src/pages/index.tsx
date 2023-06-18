@@ -6,13 +6,25 @@ export default function Home() {
     <>
       <div className={styles.container}>
         <div className={styles.mt}>
-          <LinkCard data={data} />
+          <LinkCard
+            url={"https://wadeen.net"}
+            target={"_blank"}
+            style={{
+              maxWidth: "500px",
+              // background: "tomato",
+              marginInline: "auto",
+            }}
+          />
         </div>
         <div className={styles.mt}>
-          <LinkCard data={data} />
-        </div>
-        <div className={styles.mt}>
-          <LinkCard data={data} />
+          <LinkCard
+            url={"https://zenn.dev"}
+            target={"_blank"}
+            style={{
+              maxWidth: "500px",
+              marginInline: "auto",
+            }}
+          />
         </div>
       </div>
     </>

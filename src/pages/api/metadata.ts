@@ -1,4 +1,3 @@
-// src/api/metadata.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import { handleGet } from "../../utils/scrape";
 
