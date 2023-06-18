@@ -10,6 +10,7 @@ type LinkCardProps = {
 
 const LinkCard: React.FC<LinkCardProps> = ({ url, target, style }) => {
   const [fetchData, setFetchData] = useState<any>(null);
+  const [error, setError] = useState<any>(null);
 
   useEffect(() => {
     (async () => {
@@ -19,6 +20,7 @@ const LinkCard: React.FC<LinkCardProps> = ({ url, target, style }) => {
         setFetchData(data);
       } catch (err) {
         console.error(err);
+        setError(true);
       }
     })();
   }, [url]);
@@ -28,16 +30,26 @@ const LinkCard: React.FC<LinkCardProps> = ({ url, target, style }) => {
   }
 
   return (
-    <a href={url} className={styles.container} target={target} style={style}>
-      <div className={styles.textArea}>
-        <p className={styles.title}>{fetchData.title}</p>
-        <p className={styles.text}>{fetchData.description}</p>
-      </div>
-      <figure className={styles.figure}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className={styles.imgStyle} src={fetchData.ogp} alt={fetchData.title || ""} />
-      </figure>
-    </a>
+    <>
+      {error ? (
+        <div>
+          <a href={url} className="link_card_error_url">
+            {url}
+          </a>
+        </div>
+      ) : (
+        <a href={url} className={styles.container} target={target} style={style}>
+          <div className={styles.textArea}>
+            <p className={styles.title}>{fetchData.title}</p>
+            <p className={styles.text}>{fetchData.description}</p>
+          </div>
+          <figure className={styles.figure}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className={styles.imgStyle} src={fetchData.ogp} alt={fetchData.title || ""} />
+          </figure>
+        </a>
+      )}
+    </>
   );
 };
 
