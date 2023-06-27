@@ -20,10 +20,6 @@ export default function Home() {
           <LinkCard
             url={"https://zenn.dev"}
             target={"_blank"}
-            style={{
-              maxWidth: "500px",
-              marginInline: "auto",
-            }}
           />
         </div>
       </div>
