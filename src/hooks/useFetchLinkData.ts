@@ -45,8 +45,7 @@ const useFetchLinkData = (url: FetchLinkUrlType["url"]) => {
       setFetchState({ data: null, error: false, loading: true });
       try {
         // Fetch data
-        // const res = await fetch(encodeURI(BASE_URL + url));
-        const res = await fetch(encodeURI(process.env.NEXT_PUBLIC_BASE_URL + url));
+        const res = await fetch(encodeURI(process.env.NEXT_PUBLIC_METADATA_URL + url));
         // Parse response data as JSON
         const data = await res.json();
         // Set fetched data and loading status
