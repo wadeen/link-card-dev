@@ -18,13 +18,24 @@ export const ogHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       const title = $("head > title").text();
       const description = $('meta[name="description"]').attr("content");
-      const ogp = $('meta[property^="og:image"]').attr("content");
+      const ogp = (() => {
+        const target = $('meta[property^="og:image"]').attr("content");
+        if (!target) return;
+        if (target.startsWith("http")) return target;
+        return url + target;
+      })();
+      const favicon = (() => {
+        const target = $('link[rel="icon"]').attr("href");
+        if (!target) return;
+        if (target.startsWith("http")) return target;
+        return url + target;
+      })();
 
       return res.status(200).json({
         title,
         description,
         ogp,
-        url,
+        favicon,
       });
     } catch (error) {
       console.error(error);

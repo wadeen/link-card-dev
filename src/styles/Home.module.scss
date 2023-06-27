@@ -1,9 +1,99 @@
-.container {
-  background-color: transparent;
-  width: min(100%, 800px);
-  margin: 0 auto;
+.wrapper {
+  padding-inline: 20px;
 }
 
-.mt {
-  margin-top: 40px;
+.container {
+  max-width: 650px;
+  margin-inline: auto;
+}
+
+/* ------------------------------------ */
+.baseContainer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border: 2px solid rgb(83, 181, 101);
+  overflow: hidden;
+  border-radius: 10px;
+  color: #333;
+  text-decoration: none;
+  background-color: rgb(233, 233, 251);
+  transition: opacity 0.2s ease-in-out;
+  height: 120px;
+  width: 100%;
+  max-width: 1000px;
+}
+.baseContainer:hover {
+  opacity: 0.8;
+}
+
+.baseTextArea {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.baseTitleArea {
+  display: flex;
+  align-items: center;
+  min-height: 2em;
+}
+
+.baseTitle {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.baseText {
+  font-size: 13px;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: gray;
+}
+
+.baseDescArea {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  min-height: 2em;
+}
+
+.baseImg {
+  object-fit: cover;
+  object-position: center;
+  width: auto;
+  height: 100%;
+  max-width: 230px;
+  max-height: 120px;
+}
+
+@media (max-width: 520px) {
+  .baseTextArea {
+    padding: 10px;
+  }
+
+  .baseTitle {
+    font-size: 16px;
+  }
+
+  .baseImg {
+    max-width: 120px;
+  }
+  .baseText {
+    font-size: 11px;
+  }
+
+  .baseTextArea {
+    padding: 12px;
+  }
 }
