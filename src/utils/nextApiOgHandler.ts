@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import fetch from "node-fetch";
 import cheerio from "cheerio";
 
-export const ogHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+export const nextApiOgHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     const url = req.query.url?.toString();
 
@@ -16,9 +16,9 @@ export const ogHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       const body = await response.text();
       const $ = cheerio.load(body);
 
-      const title = $("head > title").text();
-      const description = $('meta[name="description"]').attr("content");
-      const ogp = (() => {
+      const ogTitle = $("head > title").text();
+      const ogDescription = $('meta[name="description"]').attr("content");
+      const ogImage = (() => {
         const target = $('meta[property^="og:image"]').attr("content");
         if (!target) return;
         if (target.startsWith("http")) return target;
@@ -32,9 +32,9 @@ export const ogHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       })();
 
       return res.status(200).json({
-        title,
-        description,
-        ogp,
+        ogTitle,
+        ogDescription,
+        ogImage,
         favicon,
       });
     } catch (error) {

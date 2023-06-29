@@ -1,6 +1,3 @@
-import { ogHandler } from "@/utils/scrape";
-import { NextApiRequest, NextApiResponse } from "next";
+import { nextApiOgHandler } from "@/utils/nextApiOgHandler";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  await ogHandler(req, res);
-}
+export default nextApiOgHandler;
