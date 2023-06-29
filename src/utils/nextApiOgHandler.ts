@@ -12,7 +12,11 @@ export const nextApiOgHandler = async (req: NextApiRequest, res: NextApiResponse
     }
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        headers: {
+          "User-Agent": "Twitterbot/1.0",
+        },
+      });
       const body = await response.text();
       const $ = cheerio.load(body);
 
